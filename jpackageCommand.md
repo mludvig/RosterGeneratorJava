@@ -18,4 +18,20 @@ jpackage --type pkg \
  --main-class com.cheng.rostergenerator.ui.Main \
  --icon "/Users/chandlercheng/Development/EclipseProjects/RosterGeneratorJava/icon.icns"
 
+# Linux (DEB)
 
+1. Build
+
+    docker run --rm -it -v $(pwd):/app -w /app maven:3.8-openjdk-15 mvn clean install package
+
+2. Package
+
+    docker run --rm -it -v $(pwd):/app -w /app openjdk:21-slim-buster ./package-linux.sh
+
+3. Install
+
+    sudo dpkg -i target/package/toaster-roster_*_amd64.deb
+
+4. Run
+
+    /opt/toaster-roster/bin/Toaster\ Roster
